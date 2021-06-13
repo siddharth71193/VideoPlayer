@@ -16,12 +16,7 @@ import com.example.videosample1.model.Video;
 import com.example.videosample1.model.VideoModel;
 import com.example.videosample1.util.CommonUtils;
 import com.example.videosample1.viewholder.VideoViewHolder;
-import com.google.gson.Gson;
-
 import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         firstTimeLoad = true;
-        
+
         parseVideoData();
 
         setUpRecyclerView();

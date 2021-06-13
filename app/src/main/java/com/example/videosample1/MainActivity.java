@@ -14,6 +14,7 @@ import android.widget.VideoView;
 import com.example.videosample1.adapter.VideoAdapter;
 import com.example.videosample1.model.Video;
 import com.example.videosample1.model.VideoModel;
+import com.example.videosample1.util.CommonUtils;
 import com.example.videosample1.viewholder.VideoViewHolder;
 import com.google.gson.Gson;
 
@@ -35,16 +36,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         firstTimeLoad = true;
-        requestVisibleBehind(true);
+        
+        parseVideoData();
 
-        try {
-            String myJson=inputStreamToString(getResources().getAssets().open("video_urls.json"));
-            VideoModel myModel = new Gson().fromJson(myJson, VideoModel.class);
-            videoModels.addAll(myModel.getCategories().get(0).getVideos());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         setUpRecyclerView();
+    }
+
+    private void parseVideoData(){
+        VideoModel videoModel = CommonUtils.parseJson(this);
+        videoModels.addAll(videoModel.getCategories().get(0).getVideos());
     }
 
     private void setUpRecyclerView(){
@@ -147,14 +147,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public String inputStreamToString(InputStream inputStream) {
-        try {
-            byte[] bytes = new byte[inputStream.available()];
-            inputStream.read(bytes, 0, bytes.length);
-            String json = new String(bytes);
-            return json;
-        } catch (IOException e) {
-            return null;
-        }
-    }
 }

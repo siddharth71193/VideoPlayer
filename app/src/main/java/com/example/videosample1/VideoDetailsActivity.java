@@ -22,12 +22,16 @@ public class VideoDetailsActivity extends AppCompatActivity {
     private View constraintLayout;
 
     private float xCoOrdinate, yCoOrdinate;
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_details);
 
+        initView();
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void initView(){
         mVideoView = findViewById(R.id.videoPlayer2);
         textView = findViewById(R.id.details1);
         constraintLayout = findViewById(R.id.layout);

@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.videosample1.R;
 import com.example.videosample1.VideoDetailsActivity;
+import com.example.videosample1.util.Constants;
 import com.example.videosample1.viewholder.VideoViewHolder;
 import com.example.videosample1.model.Video;
 import org.jetbrains.annotations.NotNull;
@@ -49,10 +50,10 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, VideoDetailsActivity.class);
-                intent.putExtra("url",playerIdx.get(position).getSources().get(0));
-                intent.putExtra("seek",holder.playerView.getCurrentPosition());
-                intent.putExtra("title",playerIdx.get(position).getTitle());
-                intent.putExtra("description",playerIdx.get(position).getDescription());
+                intent.putExtra(Constants.IntentExtraKeys.VIDEO_URL,playerIdx.get(position).getSources().get(0));
+                intent.putExtra(Constants.IntentExtraKeys.SEEKBAR_POSITION,holder.playerView.getCurrentPosition());
+                intent.putExtra(Constants.IntentExtraKeys.VIDEO_TRANSITION_NAME,playerIdx.get(position).getTitle());
+                intent.putExtra(Constants.IntentExtraKeys.VIDEO_DESCRIPTION,playerIdx.get(position).getDescription());
 
                 ViewCompat.setTransitionName(holder.playerView, playerIdx.get(position).getTitle());
 

@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.example.videosample1.util.Constants;
+
 public class VideoDetailsActivity extends AppCompatActivity {
     private static final String TAG = "VideoDetailsActivity";
     private String mUrl;
@@ -30,10 +32,10 @@ public class VideoDetailsActivity extends AppCompatActivity {
         textView = findViewById(R.id.details1);
         constraintLayout = findViewById(R.id.layout);
 
-        mUrl = getIntent().getExtras().getString("url");
-        duration = getIntent().getExtras().getInt("seek");
-        String imageTransitionName = getIntent().getExtras().getString("title");
-        String description = getIntent().getExtras().getString("description");
+        mUrl = getIntent().getExtras().getString(Constants.IntentExtraKeys.VIDEO_URL);
+        duration = getIntent().getExtras().getInt(Constants.IntentExtraKeys.SEEKBAR_POSITION);
+        String imageTransitionName = getIntent().getExtras().getString(Constants.IntentExtraKeys.VIDEO_TRANSITION_NAME);
+        String description = getIntent().getExtras().getString(Constants.IntentExtraKeys.VIDEO_DESCRIPTION);
 
         textView.setText(description);
 
